@@ -1,0 +1,48 @@
+version: "3.9"
+services:
+  keeper-db:
+    image: mysql/mysql-server:8.0
+    container_name: keeper-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: 'keeper'
+      MYSQL_USER: 'root'
+    ports:
+      - 3307:3306
+    expose:
+      - 3307
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+  keeper-backend:
+    build: ./
+    container_name: keeper-backend
+    environment:
+      NODE_ENV: development
+      PORT: 9000
+      DB_HOST: "keeper-db"
+      DB_PASSWORD: "password"
+      DB_USERNAME: "root"
+      DB_NAME: "keeper"
+      DB_PORT: 3306
+      DB_SYNC: false
+      DB_DIALECT: "mysql"
+    ports:
+      - 9000:9000
+    links:
+      - keeper-db
+    depends_on:
+      keeper-db:
+        condition: service_healthy
+  keeper-frontend:
+    build: ./keeper-frontend/
+    container_name: keeper-frontend
+    environment:
+      NODE_ENV: production
+      HOST: keeper-backend
+    ports: 
+      - 3000:3000
