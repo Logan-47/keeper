@@ -8,7 +8,7 @@
 - Main sections is at `/manage` page.
 
 ## demo
-![demo]("./demo/keeper.gif)
+<img src="./demo/keeper.gif"/>
 
 ## Kěeper-frontenď
 - url: `localhost:9000`
