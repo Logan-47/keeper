@@ -14,7 +14,7 @@
 - url: `localhost:9000`
 
 ## Keeper-backend API
-- Postman API Collection & Environment: "./apiCollection"
+- [Postman API Collection & Environment]("./apiCollection")
 
 ### Authentication
 - Signup
