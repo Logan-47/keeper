@@ -8,9 +8,9 @@
 - Main sections is at `/manage` page.
 
 ## demo
-[![Video Title]("thumbnail")](./demo/keeper.mp4)
+![demo]("./demo/keeper.gif)
 
-## Keeper-frontend
+## Kěeper-frontenď
 - url: `localhost:9000`
 
 ## Keeper-backend API
