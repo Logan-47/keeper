@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "1e7caad1-de94-40f4-a4ee-cb7f498f5e52",
+		"name": "Keeper",
+		"description": "Keeper postman collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33869574",
+		"_collection_link": "https://warped-desert-353930.postman.co/workspace/Team-Workspace~b96de1fc-39e5-4905-8df0-beebcb085efb/collection/33869574-1e7caad1-de94-40f4-a4ee-cb7f498f5e52?action=share&source=collection_link&creator=33869574"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test user\",\n    \"email\": \"test3@gmail.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/auth/signup",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const token = pm.response.json().data.token;",
+									"pm.environment.set(\"TOKEN\", token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ashis.singh@gmail.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/auth/login",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"itemone\",\n    \"icon\": \"😀\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Re order Items",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"itemone\",\n    \"icon\": \"😀\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items/4",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"update item 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items/4",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"update item 1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items/1",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Items to Folder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"itemone\",\n    \"icon\": \"😀\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/items",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Folders",
+			"item": [
+				{
+					"name": "create folder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"my folder\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folder",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Folder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folders",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Folder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folders/25",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folders",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Folder",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"CLOSED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folders/25",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folders",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Folder",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folders/24",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folders",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reorder folders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"folders\": [\n        {\n            \"id\":  \n        },\n        {\n            \"id\"\n        },\n        {\n\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}{{apiv1}}/folders/reorder",
+							"host": [
+								"{{URL}}{{apiv1}}"
+							],
+							"path": [
+								"folders",
+								"reorder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

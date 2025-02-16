@@ -45,6 +45,7 @@ const Login = () => {
 
         <button type="submit" className="bg-blue-500 text-white p-2 w-full mt-4">Login</button>
       </form>
+      <br />
       <button onClick={onSignupClick}>signup</button>
     </div>
   );
